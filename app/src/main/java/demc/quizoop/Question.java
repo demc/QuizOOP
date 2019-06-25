@@ -1,11 +1,10 @@
 package demc.quizoop;
 
+import java.util.Scanner;
+
 public class Question
 {
     private String mQuestionText;
-    private String mTextAnswer;
-    private boolean mFillTheBlankQuestion;
-
 
     public Question(String questionText)
     {
@@ -22,6 +21,16 @@ public class Question
         mQuestionText = text;
     }
 
+    public boolean readInputAndCheckAnswer(Scanner input)
+    {
+        return false;
+    }
+
+    public void prompt()
+    {
+        System.out.println(mQuestionText);
+    }
+
     public boolean checkAnswer(boolean answer)
     {
         return false;
@@ -29,7 +38,12 @@ public class Question
 
     public boolean checkAnswer(String answer)
     {
-        return mTextAnswer.equalsIgnoreCase(answer);
+        return false;
+    }
+
+    public boolean checkAnswer(int answer)
+    {
+        return false;
     }
 
     public boolean isTrueFalseQuestion()
@@ -39,6 +53,10 @@ public class Question
 
     public boolean isFillTheBlankQuestion()
     {
-        return mFillTheBlankQuestion;
+        return false;
+    }
+
+    public boolean isMultipleChoiceQuestion() {
+        return false;
     }
 }

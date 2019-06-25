@@ -6,9 +6,11 @@ public class QuizOOPMain
 {
     public static void main(String[] args)
     {
-        Question[] questions = new Question[1];
+        Question[] questions = new Question[4];
         questions[0] = new TrueFalseQuestion("You can see Russia from my house", false);
         questions[1] = new FillTheBlankQuestion("The capital of Texas is ___.", "Austin");
+        questions[2] = new FillTheBlankQuestion("A StarWars character is ___.", "Han Solo", "Chewbacca");
+        questions[3] = new MCQuestion("Aniken is from which planet?", 1, "Alderaan", "Tatooine", "Coruscant", "Hoth");
 
         int index = 0;
         int score = 0;
@@ -19,36 +21,31 @@ public class QuizOOPMain
 
         while (index < questions.length)
         {
-            System.out.println(questions[index].getText());
-            boolean boolResponse;
-            String strResponse;
-            boolean correctResponse = false;
+//            System.out.println(questions[index].getText());
+//            boolean correctResponse = false;
+//
+//            if (questions[index].isTrueFalseQuestion())
+//            {
+//                System.out.print("Enter t or f: ");
+//            }
+//            else if (questions[index].isTrueFalseQuestion())
+//            {
+//                System.out.print("Type your response: ");
+//            }
+//            else if (questions[index].isMultipleChoiceQuestion())
+//            {
+//                System.out.println("Select the best option:");
+//                for (String option : questions[index].getOptions())
+//            }
 
-            if (questions[index].isTrueFalseQuestion())
-            {
-                System.out.print("Enter t or f: ");
-                char in = input.nextLine().charAt(0);
-                boolean response;
+            questions[index].prompt();
 
-                if (in == 't')
-                {
-                    response = true;
-                }
-                else
-                {
-                    response = false;
-                }
-                correctResponse = questions[index].checkAnswer(response);
-            }
-            else
-            {
-                System.out.print("Type your response: ");
-                String response = input.nextLine();
-            }
+            boolean correctResponse = questions[index].readInputAndCheckAnswer(input);
 
             if (correctResponse)
             {
                 System.out.println("Correct! :)");
+                score++;
             }
             else
             {
